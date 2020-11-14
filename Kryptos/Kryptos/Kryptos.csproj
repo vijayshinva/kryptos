@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>Vijayshinva Karnure</Authors>
+    <Description>A .NET core tool for cryptography.</Description>
+    <Copyright>(c) 2020 Vijayshinva Karnure</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/vijayshinva/kryptos</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/vijayshinva/kryptos</RepositoryUrl>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>kryptos</ToolCommandName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
