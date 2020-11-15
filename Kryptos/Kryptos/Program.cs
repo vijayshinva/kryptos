@@ -13,7 +13,8 @@ namespace Kryptos
                 TreatUnmatchedTokensAsErrors = true
             };
 
-            rootCommand.WireUpBase64Commands()
+            rootCommand.WireUpUuidCommands()
+                .WireUpBase64Commands()
                 .WireUpMd5Commands()
                 .WireUpSha1Commands()
                 .WireUpSha256Commands()

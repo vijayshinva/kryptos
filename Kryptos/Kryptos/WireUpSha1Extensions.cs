@@ -13,7 +13,7 @@ namespace Kryptos
     {
         public static RootCommand WireUpSha1Commands(this RootCommand rootCommand)
         {
-            var sha1Command = new Command("sha1", "SHA1");
+            var sha1Command = new Command("sha1", "Secure Hash Algorithm 1");
             var sha1HashCommand = new Command("hash", "Hash");
             sha1HashCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
             {

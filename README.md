@@ -48,7 +48,7 @@ kryptos --help
     ```
     kryptos base64 dec -t "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4="
     ```
-3. Generate SHA256 hash of file
+3. Generate SHA-256 hash of file
     ```
     kryptos sha256 hash -i .\ubuntu-20.04-desktop-amd64.iso
     ```
@@ -68,3 +68,7 @@ NOTE: By raising a Pull Request you grant the guardians of this project the nece
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvijayshinva%2Fkryptos.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvijayshinva%2Fkryptos?ref=badge_shield)
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvijayshinva%2Fkryptos.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvijayshinva%2Fkryptos?ref=badge_large)
+
+
+
+[git-repo]: https://github.com/vijayshinva/kryptos

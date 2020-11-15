@@ -13,7 +13,7 @@ namespace Kryptos
     {
         public static RootCommand WireUpSha384Commands(this RootCommand rootCommand)
         {
-            var sha384Command = new Command("sha384", "SHA384");
+            var sha384Command = new Command("sha384", "Secure Hash Algorithm 2 - 384");
             var sha384HashCommand = new Command("hash", "Hash");
             sha384HashCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
             {

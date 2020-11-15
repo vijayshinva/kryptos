@@ -34,7 +34,6 @@ namespace Kryptos
                 Stream inputStream = null;
                 try
                 {
-
                     if (output == null)
                     {
                         outputStream = new MemoryStream();

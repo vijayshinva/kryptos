@@ -13,7 +13,7 @@ namespace Kryptos
     {
         public static RootCommand WireUpMd5Commands(this RootCommand rootCommand)
         {
-            var md5Command = new Command("md5", "MD5");
+            var md5Command = new Command("md5", "Message Digest 5");
             var md5HashCommand = new Command("hash", "Hash");
             md5HashCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
             {
