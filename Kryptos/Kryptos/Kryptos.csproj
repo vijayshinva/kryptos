@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>Vijayshinva Karnure</Authors>
     <Description>A .NET core tool for cryptography.</Description>
     <Copyright>(c) 2020 Vijayshinva Karnure</Copyright>

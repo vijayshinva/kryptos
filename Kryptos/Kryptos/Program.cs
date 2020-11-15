@@ -13,7 +13,8 @@ namespace Kryptos
                 TreatUnmatchedTokensAsErrors = true
             };
 
-            rootCommand.WireUpBase64Commands();
+            rootCommand.WireUpBase64Commands()
+                .WireUpMd5Commands();
 
             return await rootCommand.InvokeAsync(args);
         }

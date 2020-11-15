@@ -30,9 +30,11 @@ namespace Kryptos
             });
             base64EncCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
+                Stream outputStream = null;
+                Stream inputStream = null;
                 try
                 {
-                    Stream outputStream = null;
+
                     if (output == null)
                     {
                         outputStream = new MemoryStream();
@@ -41,7 +43,7 @@ namespace Kryptos
                     {
                         outputStream = output.OpenWrite();
                     }
-                    Stream inputStream = null;
+
                     if (text != null)
                     {
                         inputStream = new MemoryStream(Encoding.UTF8.GetBytes(text));
@@ -55,8 +57,7 @@ namespace Kryptos
                     {
                         await inputStream.CopyToAsync(cryptoStream);
                     }
-                    await inputStream.DisposeAsync();
-                    await outputStream.DisposeAsync();
+
                     if (output == null)
                     {
                         console.Out.WriteLine(Encoding.UTF8.GetString(((MemoryStream)outputStream).ToArray()));
@@ -65,6 +66,17 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    if (inputStream != null)
+                    {
+                        await inputStream.DisposeAsync();
+                    }
+                    if (outputStream != null)
+                    {
+                        await outputStream.DisposeAsync();
+                    }
                 }
             });
             var base64DecCommand = new Command("decode", "Decode");
@@ -83,9 +95,10 @@ namespace Kryptos
             });
             base64DecCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
+                Stream outputStream = null;
+                Stream inputStream = null;
                 try
                 {
-                    Stream outputStream = null;
                     if (output == null)
                     {
                         outputStream = new MemoryStream();
@@ -94,7 +107,7 @@ namespace Kryptos
                     {
                         outputStream = output.OpenWrite();
                     }
-                    Stream inputStream = null;
+
                     if (text != null)
                     {
                         inputStream = new MemoryStream(Encoding.UTF8.GetBytes(text));
@@ -108,8 +121,7 @@ namespace Kryptos
                     {
                         await inputStream.CopyToAsync(cryptoStream);
                     }
-                    await inputStream.DisposeAsync();
-                    await outputStream.DisposeAsync();
+
                     if (output == null)
                     {
                         console.Out.WriteLine(Encoding.UTF8.GetString(((MemoryStream)outputStream).ToArray()));
@@ -118,6 +130,17 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    if (inputStream != null)
+                    {
+                        await inputStream.DisposeAsync();
+                    }
+                    if (outputStream != null)
+                    {
+                        await outputStream.DisposeAsync();
+                    }
                 }
             });
             base64Command.Add(base64EncCommand);
