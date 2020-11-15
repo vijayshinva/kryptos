@@ -14,7 +14,11 @@ namespace Kryptos
             };
 
             rootCommand.WireUpBase64Commands()
-                .WireUpMd5Commands();
+                .WireUpMd5Commands()
+                .WireUpSha1Commands()
+                .WireUpSha256Commands()
+                .WireUpSha384Commands()
+                .WireUpSha512Commands();
 
             return await rootCommand.InvokeAsync(args);
         }
