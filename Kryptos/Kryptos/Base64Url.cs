@@ -24,9 +24,10 @@ namespace Kryptos
         {
             text = text.Replace(base64UrlCharacter62, base64Character62)
                 .Replace(base64UrlCharacter63, base64Character63);
-            
+
             text += (text.Length % 4) switch
             {
+                0 => string.Empty,
                 2 => doubleBase64PadCharacter,
                 3 => base64PadCharacter,
                 _ => throw new FormatException("Base64Url encoded string is not good."),
