@@ -15,6 +15,7 @@ A .NET core tool for cryptography.
 - [License](#license)
 
 ## Features
+- UUID generation
 - Base64, Base64Url encoding and decoding
 - MD5 Hash
 - SHA-1, SHA-256, SHA-384, SHA-512 Hash
