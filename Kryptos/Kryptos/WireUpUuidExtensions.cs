@@ -14,7 +14,7 @@ namespace Kryptos
         public static RootCommand WireUpUuidCommands(this RootCommand rootCommand)
         {
             var guidCommand = new Command("uuid", "Universally Unique Identifier");
-            guidCommand.AddOption(new Option(new string[] { "--no-hypens", "-nh" }, "No Hypens")
+            guidCommand.AddOption(new Option(new string[] { "--no-hypens", "--no-dash", "-n" }, "No Hypens")
             {
                 Argument = new Argument<bool>("noHypens")
             });

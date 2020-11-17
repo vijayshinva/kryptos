@@ -15,10 +15,10 @@ A .NET core tool for cryptography.
 - [License](#license)
 
 ## Features
-- Base64, Base64Url Encoding and Decoding
+- Base64, Base64Url encoding and decoding
 - MD5 Hash
 - SHA-1, SHA-256, SHA-384, SHA-512 Hash
-- JWT
+- JWT decoding
 
 ## Installation
 
@@ -52,6 +52,10 @@ kryptos --help
 3. Generate SHA-256 hash of file
     ```
     kryptos sha256 hash -i .\ubuntu-20.04-desktop-amd64.iso
+    ```
+4. Decode a JWT token
+    ```
+    kryptos jwt dec -t eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
     ```
 
 ## Contributing
