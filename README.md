@@ -15,9 +15,10 @@ A .NET core tool for cryptography.
 - [License](#license)
 
 ## Features
-- Base64 Encoding and Decoding
+- Base64, Base64Url Encoding and Decoding
 - MD5 Hash
 - SHA-1, SHA-256, SHA-384, SHA-512 Hash
+- JWT
 
 ## Installation
 
