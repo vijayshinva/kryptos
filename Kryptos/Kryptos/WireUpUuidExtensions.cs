@@ -49,9 +49,6 @@ namespace Kryptos
                 {
                     console.Out.WriteLine(ex.Message);
                 }
-                finally
-                {
-                }
             });
 
             rootCommand.AddCommand(guidCommand);

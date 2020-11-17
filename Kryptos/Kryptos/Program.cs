@@ -15,6 +15,7 @@ namespace Kryptos
 
             rootCommand.WireUpUuidCommands()
                 .WireUpBase64Commands()
+                .WireUpBase64UrlCommands()
                 .WireUpMd5Commands()
                 .WireUpSha1Commands()
                 .WireUpSha256Commands()
