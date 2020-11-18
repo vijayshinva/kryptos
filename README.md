@@ -8,7 +8,6 @@ A .NET core tool for cryptography.
 ## Overview
 - [Features](#features)
 - [Installation](#installation)
-- [Update](#update)
 - [Usage](#usage)
 - [Examples](#examples)
 - [Contributing](#contributing)
@@ -36,7 +35,6 @@ For offline installation, download the [nuget package][nuget-package] into a fol
 dotnet tool install --global Kryptos --add-source FolderWithKryptosNuget\ 
 ```
 
-## Update
 **Kryptos** is under active development and new features are being added. Update to the latest version using the command below.
 ```
 dotnet tool update --global Kryptos
@@ -64,7 +62,7 @@ kryptos --help
     ```
 4. Decode a JWT token
     ```
-    kryptos jwt dec -t eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+    kryptos jwt dec -t eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlZpamF5c2hpbnZhIEthcm51cmUiLCJpYXQiOjE1MTYyMzkwMjIsImF1ZCI6Imh0dHBzOi8vZ2l0aHViLmNvbS92aWpheXNoaW52YS9rcnlwdG9zIn0.ufklYra5bLYKM-FWnmxI0Tsw_ILmTIDK0cJ7ZkPfwfE
     ```
 
 ## Contributing
