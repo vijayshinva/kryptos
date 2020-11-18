@@ -14,20 +14,20 @@ namespace Kryptos
         public static RootCommand WireUpUuidCommands(this RootCommand rootCommand)
         {
             var guidCommand = new Command("uuid", "Universally Unique Identifier");
-            guidCommand.AddOption(new Option(new string[] { "--no-hypens", "--no-dash", "-n" }, "No Hypens")
+            guidCommand.AddOption(new Option(new string[] { "--no-hyphens", "--no-dash", "-n" }, "No Hyphens")
             {
-                Argument = new Argument<bool>("noHypens")
+                Argument = new Argument<bool>("noHyphens")
             });
             guidCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
             {
                 Argument = new Argument<FileInfo>("output")
             });
-            guidCommand.Handler = CommandHandler.Create<bool, FileInfo, IConsole>(async (noHypens, output, console) =>
+            guidCommand.Handler = CommandHandler.Create<bool, FileInfo, IConsole>(async (noHyphens, output, console) =>
             {
                 try
                 {
                     string uuid;
-                    if (noHypens)
+                    if (noHyphens)
                     {
                         uuid = Guid.NewGuid().ToString("N");
                     }
@@ -42,7 +42,7 @@ namespace Kryptos
                     }
                     else
                     {
-                        await File.WriteAllTextAsync(output.FullName, uuid);
+                        await File.WriteAllTextAsync(output.FullName, uuid).ConfigureAwait(false);
                     }
                 }
                 catch (Exception ex)

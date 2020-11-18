@@ -54,7 +54,7 @@ namespace Kryptos
 
                     using (var cryptoStream = new CryptoStream(outputStream, new ToBase64Transform(), CryptoStreamMode.Write))
                     {
-                        await inputStream.CopyToAsync(cryptoStream);
+                        await inputStream.CopyToAsync(cryptoStream).ConfigureAwait(false);
                     }
 
                     if (output == null)
@@ -70,11 +70,11 @@ namespace Kryptos
                 {
                     if (inputStream != null)
                     {
-                        await inputStream.DisposeAsync();
+                        await inputStream.DisposeAsync().ConfigureAwait(false);
                     }
                     if (outputStream != null)
                     {
-                        await outputStream.DisposeAsync();
+                        await outputStream.DisposeAsync().ConfigureAwait(false);
                     }
                 }
             });
@@ -118,7 +118,7 @@ namespace Kryptos
 
                     using (var cryptoStream = new CryptoStream(outputStream, new FromBase64Transform(), CryptoStreamMode.Write))
                     {
-                        await inputStream.CopyToAsync(cryptoStream);
+                        await inputStream.CopyToAsync(cryptoStream).ConfigureAwait(false);
                     }
 
                     if (output == null)
@@ -134,11 +134,11 @@ namespace Kryptos
                 {
                     if (inputStream != null)
                     {
-                        await inputStream.DisposeAsync();
+                        await inputStream.DisposeAsync().ConfigureAwait(false);
                     }
                     if (outputStream != null)
                     {
-                        await outputStream.DisposeAsync();
+                        await outputStream.DisposeAsync().ConfigureAwait(false);
                     }
                 }
             });

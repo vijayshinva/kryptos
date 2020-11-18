@@ -58,7 +58,7 @@ namespace Kryptos
                     }
                     else
                     {
-                        await outputStream.WriteAsync(hashBytes);
+                        await outputStream.WriteAsync(hashBytes).ConfigureAwait(false);
                     }
                 }
                 catch (Exception ex)
@@ -69,11 +69,11 @@ namespace Kryptos
                 {
                     if (inputStream != null)
                     {
-                        await inputStream.DisposeAsync();
+                        await inputStream.DisposeAsync().ConfigureAwait(false);
                     }
                     if (outputStream != null)
                     {
-                        await outputStream.DisposeAsync();
+                        await outputStream.DisposeAsync().ConfigureAwait(false);
                     }
                 }
             });

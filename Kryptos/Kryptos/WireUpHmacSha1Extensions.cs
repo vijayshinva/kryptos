@@ -60,7 +60,7 @@ namespace Kryptos
 
                     if (keyinput != null)
                     {
-                        key = await File.ReadAllBytesAsync(keyinput.FullName);
+                        key = await File.ReadAllBytesAsync(keyinput.FullName).ConfigureAwait(false);
                     }
 
                     using var hmacSha1 = new HMACSHA1(key);
@@ -72,7 +72,7 @@ namespace Kryptos
                     else
                     {
                         outputStream = output.OpenWrite();
-                        await outputStream.WriteAsync(hashBytes);
+                        await outputStream.WriteAsync(hashBytes).ConfigureAwait(false);
                     }
                 }
                 catch (Exception ex)
@@ -83,11 +83,11 @@ namespace Kryptos
                 {
                     if (inputStream != null)
                     {
-                        await inputStream.DisposeAsync();
+                        await inputStream.DisposeAsync().ConfigureAwait(false);
                     }
                     if (outputStream != null)
                     {
-                        await outputStream.DisposeAsync();
+                        await outputStream.DisposeAsync().ConfigureAwait(false);
                     }
                 }
             });

@@ -41,7 +41,7 @@ namespace Kryptos
                     }
                     if (input != null)
                     {
-                        jwt = Jwt.Decode(File.ReadAllText(input.FullName));
+                        jwt = Jwt.Decode(await File.ReadAllTextAsync(input.FullName).ConfigureAwait(false));
                     }
 
                     if (output == null)
@@ -50,7 +50,7 @@ namespace Kryptos
                     }
                     else
                     {
-                        File.WriteAllText(output.FullName, jwt);
+                        await File.WriteAllTextAsync(output.FullName, jwt).ConfigureAwait(false);
                     }
                 }
                 catch (Exception ex)

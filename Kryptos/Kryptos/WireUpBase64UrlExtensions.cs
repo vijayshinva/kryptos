@@ -49,7 +49,7 @@ namespace Kryptos
                     }
                     else
                     {
-                        File.WriteAllText(output.FullName, base64UrlEncodedText);
+                        await File.WriteAllTextAsync(output.FullName, base64UrlEncodedText).ConfigureAwait(false);
                     }
                 }
                 catch (Exception ex)
@@ -92,7 +92,7 @@ namespace Kryptos
                     }
                     else
                     {
-                        File.WriteAllText(output.FullName, base64UrlDecodedText);
+                        await File.WriteAllTextAsync(output.FullName, base64UrlDecodedText).ConfigureAwait(false);
                     }
                 }
                 catch (Exception ex)
