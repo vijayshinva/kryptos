@@ -20,6 +20,7 @@ A .NET core tool for cryptography.
 - MD5 Hash
 - SHA-1, SHA-256, SHA-384, SHA-512 Hash
 - JWT decoding
+- HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, HMAC-SHA512, HMAC-MD5
 
 ## Installation
 
@@ -29,11 +30,18 @@ A .NET core tool for cryptography.
 dotnet tool install --global Kryptos
 ```
 
+For offline installation, download the [nuget package][nuget-package] into a folder and run the following command.
+
+```
+dotnet tool install --global Kryptos --add-source FolderWithKryptosNuget\ 
+```
+
 ## Update
 **Kryptos** is under active development and new features are being added. Update to the latest version using the command below.
 ```
 dotnet tool update --global Kryptos
 ```
+
 
 ## Usage
 
@@ -78,3 +86,4 @@ NOTE: By raising a Pull Request you grant the guardians of this project the nece
 
 
 [git-repo]: https://github.com/vijayshinva/kryptos
+[nuget-package]: https://www.nuget.org/packages/Kryptos
