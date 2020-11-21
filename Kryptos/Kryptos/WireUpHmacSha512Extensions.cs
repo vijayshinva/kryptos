@@ -64,6 +64,7 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                    return 22;
                 }
                 finally
                 {
@@ -76,6 +77,7 @@ namespace Kryptos
                         await outputStream.DisposeAsync().ConfigureAwait(false);
                     }
                 }
+                return 0;
             });
 
             hmacsha512Command.Add(hmacsha512HashCommand);

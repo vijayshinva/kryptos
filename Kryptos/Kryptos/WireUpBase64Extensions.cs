@@ -57,6 +57,7 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                    return 22;
                 }
                 finally
                 {
@@ -69,6 +70,7 @@ namespace Kryptos
                         await outputStream.DisposeAsync().ConfigureAwait(false);
                     }
                 }
+                return 0;
             });
             var base64DecCommand = new Command("decode", "Decode");
             base64DecCommand.AddAlias("dec");

@@ -32,7 +32,7 @@ namespace Kryptos
                     }
                     if (input != null)
                     {
-                        base64UrlEncodedText = Base64Url.Encode(File.ReadAllText(input.FullName));
+                        base64UrlEncodedText = Base64Url.Encode(await File.ReadAllTextAsync(input.FullName).ConfigureAwait(false));
                     }
 
                     if (output == null)
@@ -47,7 +47,9 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                    return 22;
                 }
+                return 0;
             });
             var base64UrlDecCommand = new Command("decode", "Decode");
             base64UrlDecCommand.AddAlias("dec");
@@ -75,7 +77,7 @@ namespace Kryptos
                     }
                     if (input != null)
                     {
-                        base64UrlDecodedText = Base64Url.Decode(File.ReadAllText(input.FullName));
+                        base64UrlDecodedText = Base64Url.Decode(await File.ReadAllTextAsync(input.FullName).ConfigureAwait(false));
                     }
 
                     if (output == null)
@@ -90,8 +92,11 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                    return 22;
                 }
+                return 0;
             });
+
             base64UrlCommand.Add(base64UrlEncCommand);
             base64UrlCommand.Add(base64UrlDecCommand);
             rootCommand.AddCommand(base64UrlCommand);

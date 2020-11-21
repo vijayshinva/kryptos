@@ -27,7 +27,6 @@ namespace Kryptos
                 Stream inputStream = null;
                 try
                 {
-
                     if (text != null)
                     {
                         inputStream = new MemoryStream(Encoding.UTF8.GetBytes(text));
@@ -64,6 +63,7 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                    return 22;
                 }
                 finally
                 {
@@ -76,6 +76,7 @@ namespace Kryptos
                         await outputStream.DisposeAsync().ConfigureAwait(false);
                     }
                 }
+                return 0;
             });
 
             hmacmd5Command.Add(hmacmd5HashCommand);

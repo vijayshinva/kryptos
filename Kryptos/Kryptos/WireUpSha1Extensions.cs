@@ -21,19 +21,9 @@ namespace Kryptos
 
             sha1HashCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
-                Stream outputStream = null;
                 Stream inputStream = null;
                 try
                 {
-                    if (output == null)
-                    {
-                        outputStream = new MemoryStream();
-                    }
-                    else
-                    {
-                        outputStream = output.OpenWrite();
-                    }
-
                     if (text != null)
                     {
                         inputStream = new MemoryStream(Encoding.UTF8.GetBytes(text));
@@ -50,12 +40,13 @@ namespace Kryptos
                     }
                     else
                     {
-                        await outputStream.WriteAsync(hashBytes).ConfigureAwait(false);
+                        await File.WriteAllBytesAsync(output.FullName, hashBytes).ConfigureAwait(false);
                     }
                 }
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                    return 22;
                 }
                 finally
                 {
@@ -63,11 +54,8 @@ namespace Kryptos
                     {
                         await inputStream.DisposeAsync().ConfigureAwait(false);
                     }
-                    if (outputStream != null)
-                    {
-                        await outputStream.DisposeAsync().ConfigureAwait(false);
-                    }
                 }
+                return 0;
             });
 
             sha1Command.Add(sha1HashCommand);

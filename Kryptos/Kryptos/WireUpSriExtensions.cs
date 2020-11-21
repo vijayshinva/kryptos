@@ -63,6 +63,7 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                    return 22;
                 }
                 finally
                 {
@@ -75,6 +76,7 @@ namespace Kryptos
                         hashAlgorithm.Dispose();
                     }
                 }
+                return 0;
             });
 
             sriCommand.Add(sriHashCommand);

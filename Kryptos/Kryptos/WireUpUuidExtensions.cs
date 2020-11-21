@@ -43,7 +43,9 @@ namespace Kryptos
                 catch (Exception ex)
                 {
                     console.Out.WriteLine(ex.Message);
+                    return 22;
                 }
+                return 0;
             });
 
             rootCommand.AddCommand(guidCommand);
