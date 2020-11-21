@@ -15,18 +15,10 @@ namespace Kryptos
         {
             var sha384Command = new Command("sha384", "Secure Hash Algorithm 2 - 384");
             var sha384HashCommand = new Command("hash", "Hash");
-            sha384HashCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            sha384HashCommand.AddOption(new Option(new string[] { "--input", "-i" }, "Input file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            sha384HashCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
-            {
-                Argument = new Argument<FileInfo>("output")
-            });
+            sha384HashCommand.AddOption(new Option<string>(new string[] { "--text", "-t" }, "Input Text"));
+            sha384HashCommand.AddOption(new Option<FileInfo>(new string[] { "--input", "-i" }, "Input file path"));
+            sha384HashCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
             sha384HashCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
                 Stream outputStream = null;

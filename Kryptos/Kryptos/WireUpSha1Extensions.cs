@@ -15,18 +15,10 @@ namespace Kryptos
         {
             var sha1Command = new Command("sha1", "Secure Hash Algorithm 1");
             var sha1HashCommand = new Command("hash", "Hash");
-            sha1HashCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            sha1HashCommand.AddOption(new Option(new string[] { "--input", "-i" }, "Input file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            sha1HashCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
-            {
-                Argument = new Argument<FileInfo>("output")
-            });
+            sha1HashCommand.AddOption(new Option<string>(new string[] { "--text", "-t" }, "Input Text"));
+            sha1HashCommand.AddOption(new Option<FileInfo>(new string[] { "--input", "-i" }, "Input file path"));
+            sha1HashCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
             sha1HashCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
                 Stream outputStream = null;

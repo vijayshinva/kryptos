@@ -15,26 +15,12 @@ namespace Kryptos
         {
             var hmacmd5Command = new Command("hmacmd5", "Hash based Message Authentication Code - MD5");
             var hmacmd5HashCommand = new Command("hash", "Hash");
-            hmacmd5HashCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            hmacmd5HashCommand.AddOption(new Option(new string[] { "--input", "-i" }, "Input file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            hmacmd5HashCommand.AddOption(new Option(new string[] { "--keytext", "-kt" }, "Key Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            hmacmd5HashCommand.AddOption(new Option(new string[] { "--keyinput", "-ki" }, "Key file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            hmacmd5HashCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
-            {
-                Argument = new Argument<FileInfo>("output")
-            });
+            hmacmd5HashCommand.AddOption(new Option<string>(new string[] { "--text", "-t" }, "Input Text"));
+            hmacmd5HashCommand.AddOption(new Option<FileInfo>(new string[] { "--input", "-i" }, "Input file path"));
+            hmacmd5HashCommand.AddOption(new Option<string>(new string[] { "--keytext", "-kt" }, "Key Text"));
+            hmacmd5HashCommand.AddOption(new Option<FileInfo>(new string[] { "--keyinput", "-ki" }, "Key file path"));
+            hmacmd5HashCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
             hmacmd5HashCommand.Handler = CommandHandler.Create<string, FileInfo, string, FileInfo, FileInfo, IConsole>(async (text, input, keytext, keyinput, output, console) =>
             {
                 Stream outputStream = null;

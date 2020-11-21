@@ -15,18 +15,10 @@ namespace Kryptos
         {
             var md5Command = new Command("md5", "Message Digest 5");
             var md5HashCommand = new Command("hash", "Hash");
-            md5HashCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            md5HashCommand.AddOption(new Option(new string[] { "--input", "-i" }, "Input file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            md5HashCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
-            {
-                Argument = new Argument<FileInfo>("output")
-            });
+            md5HashCommand.AddOption(new Option<string>(new string[] { "--text", "-t" }, "Input Text"));
+            md5HashCommand.AddOption(new Option<FileInfo>(new string[] { "--input", "-i" }, "Input file path"));
+            md5HashCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
             md5HashCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
                 Stream outputStream = null;

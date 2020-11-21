@@ -15,26 +15,12 @@ namespace Kryptos
         {
             var hmacsha512Command = new Command("hmacsha512", "Hash based Message Authentication Code - SHA512");
             var hmacsha512HashCommand = new Command("hash", "Hash");
-            hmacsha512HashCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            hmacsha512HashCommand.AddOption(new Option(new string[] { "--input", "-i" }, "Input file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            hmacsha512HashCommand.AddOption(new Option(new string[] { "--keytext", "-kt" }, "Key Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            hmacsha512HashCommand.AddOption(new Option(new string[] { "--keyinput", "-ki" }, "Key file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            hmacsha512HashCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
-            {
-                Argument = new Argument<FileInfo>("output")
-            });
+            hmacsha512HashCommand.AddOption(new Option<string>(new string[] { "--text", "-t" }, "Input Text"));
+            hmacsha512HashCommand.AddOption(new Option<FileInfo>(new string[] { "--input", "-i" }, "Input file path"));
+            hmacsha512HashCommand.AddOption(new Option<string>(new string[] { "--keytext", "-kt" }, "Key Text"));
+            hmacsha512HashCommand.AddOption(new Option<FileInfo>(new string[] { "--keyinput", "-ki" }, "Key file path"));
+            hmacsha512HashCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
             hmacsha512HashCommand.Handler = CommandHandler.Create<string, FileInfo, string, FileInfo, FileInfo, IConsole>(async (text, input, keytext, keyinput, output, console) =>
             {
                 Stream outputStream = null;

@@ -20,6 +20,7 @@ A .NET core tool for cryptography.
 - SHA-1, SHA-256, SHA-384, SHA-512 Hash
 - JWT decoding
 - HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, HMAC-SHA512, HMAC-MD5
+- Subresource Integrity
 
 ## Installation
 
@@ -63,6 +64,10 @@ kryptos --help
 4. Decode a JWT token
     ```
     kryptos jwt dec -t eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlZpamF5c2hpbnZhIEthcm51cmUiLCJpYXQiOjE1MTYyMzkwMjIsImF1ZCI6Imh0dHBzOi8vZ2l0aHViLmNvbS92aWpheXNoaW52YS9rcnlwdG9zIn0.ufklYra5bLYKM-FWnmxI0Tsw_ILmTIDK0cJ7ZkPfwfE
+    ```
+5. Generate Subresource Integrity
+    ```
+    kryptos sri hash -u https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css
     ```
 
 ## Contributing

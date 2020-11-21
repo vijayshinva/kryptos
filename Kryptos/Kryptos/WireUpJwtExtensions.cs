@@ -17,18 +17,10 @@ namespace Kryptos
             
             var jwtDecCommand = new Command("decode", "Decode");
             jwtDecCommand.AddAlias("dec");
-            jwtDecCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            jwtDecCommand.AddOption(new Option(new string[] { "--input", "-i" }, "Input file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            jwtDecCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
-            {
-                Argument = new Argument<FileInfo>("output")
-            });
+            jwtDecCommand.AddOption(new Option<string>(new string[] { "--text", "-t" }, "Input Text"));
+            jwtDecCommand.AddOption(new Option<FileInfo>(new string[] { "--input", "-i" }, "Input file path"));
+            jwtDecCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
             jwtDecCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
                 try

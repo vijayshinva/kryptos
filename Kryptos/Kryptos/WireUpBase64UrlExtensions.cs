@@ -16,18 +16,10 @@ namespace Kryptos
             var base64UrlCommand = new Command("base64url", "Base64 URL");
             var base64UrlEncCommand = new Command("encode", "Encode");
             base64UrlEncCommand.AddAlias("enc");
-            base64UrlEncCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            base64UrlEncCommand.AddOption(new Option(new string[] { "--input", "-i" }, "Input file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            base64UrlEncCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
-            {
-                Argument = new Argument<FileInfo>("output")
-            });
+            base64UrlEncCommand.AddOption(new Option<string>(new string[] { "--text", "-t" }, "Input Text"));
+            base64UrlEncCommand.AddOption(new Option<FileInfo>(new string[] { "--input", "-i" }, "Input file path"));
+            base64UrlEncCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
             base64UrlEncCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
                 try
