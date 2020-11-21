@@ -49,27 +49,28 @@ kryptos --help
 ```
 
 ## Examples
-1. Generate Base64 encoded string
-    ```
-    kryptos base64 enc -t "The quick brown fox jumps over the lazy dog."
-    ```
-2. Decode Base64 encoded string
+
+1. Decode Base64 encoded string
     ```
     kryptos base64 dec -t "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4="
     ```
-3. Generate SHA-256 hash of file
+2. Generate SHA-256 hash of file
     ```
     kryptos sha256 hash -i .\ubuntu-20.04-desktop-amd64.iso
     ```
-4. Decode a JWT token
+3. Decode a JWT token
     ```
     kryptos jwt dec -t eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlZpamF5c2hpbnZhIEthcm51cmUiLCJpYXQiOjE1MTYyMzkwMjIsImF1ZCI6Imh0dHBzOi8vZ2l0aHViLmNvbS92aWpheXNoaW52YS9rcnlwdG9zIn0.ufklYra5bLYKM-FWnmxI0Tsw_ILmTIDK0cJ7ZkPfwfE
     ```
-5. Generate Subresource Integrity
+4. Generate Subresource Integrity
     ```
     kryptos sri hash -u https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css
     ```
-
+5. Look up Cryptographic Object Identifier
+    ```
+    kryptos oid -t 1.3.6.1.5.5.7.3.1
+    ```
+    
 ## Contributing
 - Fork the repo on [GitHub][git-repo]
 - Clone the project to your own machine
