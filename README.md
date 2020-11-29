@@ -21,6 +21,7 @@ A .NET core tool for cryptography.
 - JWT decoding
 - HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, HMAC-SHA512, HMAC-MD5
 - Subresource Integrity
+- Cryptographic Object Identifier lookup
 
 ## Installation
 
@@ -74,7 +75,7 @@ kryptos --help
 ## Contributing
 - Fork the repo on [GitHub][git-repo]
 - Clone the project to your own machine
-- Commit changes to your own branch
+- Commit changes to ```vnext``` branch
 - Push your work back up to your fork
 - Be sure to pull the latest from "upstream" before making a pull request!
 - Submit a Pull Request so that changes can be reviewed and merged
