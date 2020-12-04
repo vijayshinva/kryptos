@@ -71,7 +71,11 @@ kryptos --help
     ```
     kryptos oid -t 1.3.6.1.5.5.7.3.1
     ```
-    
+6. Encrypt text using a PFX certificate
+    ```
+    kryptos pfx enc -ci MyCertificate.pfx -kt pfxPassword -t "The quick brown fox jumps over the lazy dog."
+    ```    
+
 ## Contributing
 - Fork the repo on [GitHub][git-repo]
 - Clone the project to your own machine
