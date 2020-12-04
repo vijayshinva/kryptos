@@ -27,8 +27,9 @@ namespace Kryptos
                 .WireUpHmacSha256Commands()
                 .WireUpHmacSha384Commands()
                 .WireUpHmacSha512Commands()
-                .WireUpSriCommands().
-                WireUpOidCommands();
+                .WireUpSriCommands()
+                .WireUpOidCommands()
+                .WireUpPfxCommands();
 
             return await rootCommand.InvokeAsync(args);
         }

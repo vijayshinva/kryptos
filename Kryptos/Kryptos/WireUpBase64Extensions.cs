@@ -74,18 +74,10 @@ namespace Kryptos
             });
             var base64DecCommand = new Command("decode", "Decode");
             base64DecCommand.AddAlias("dec");
-            base64DecCommand.AddOption(new Option(new string[] { "--text", "-t" }, "Input Text")
-            {
-                Argument = new Argument<string>("text")
-            });
-            base64DecCommand.AddOption(new Option(new string[] { "--input", "-i" }, "Input file path")
-            {
-                Argument = new Argument<FileInfo>("input")
-            });
-            base64DecCommand.AddOption(new Option(new string[] { "--output", "-o" }, "Output file path")
-            {
-                Argument = new Argument<FileInfo>("output")
-            });
+            base64DecCommand.AddOption(new Option<string>(new string[] { "--text", "-t" }, "Input Text"));
+            base64DecCommand.AddOption(new Option<FileInfo>(new string[] { "--input", "-i" }, "Input file path"));
+            base64DecCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
             base64DecCommand.Handler = CommandHandler.Create<string, FileInfo, FileInfo, IConsole>(async (text, input, output, console) =>
             {
                 Stream outputStream = null;
