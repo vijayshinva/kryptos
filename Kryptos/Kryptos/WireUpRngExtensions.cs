@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.CommandLine.IO;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace Kryptos
 {

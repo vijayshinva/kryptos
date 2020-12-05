@@ -25,7 +25,7 @@ A .NET core tool for cryptography.
 - Create self-signed certificates (PFX)
 - Encryption and decryption using PFX
 - Random Number Generator
-- Zip file information
+- Zip file content information
 
 ## Installation
 

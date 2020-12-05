@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.CommandLine.Rendering;
-using System.Text;
 
 namespace Kryptos
 {

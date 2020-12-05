@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.CommandLine.Rendering;
+﻿using System.CommandLine.Rendering;
 using System.CommandLine.Rendering.Views;
 using System.IO.Compression;
-using System.Linq;
-using System.Text;
 
 namespace Kryptos
 {

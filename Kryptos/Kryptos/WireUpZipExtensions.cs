@@ -5,10 +5,7 @@ using System.CommandLine.Invocation;
 using System.CommandLine.IO;
 using System.IO;
 using System.IO.Compression;
-using System.Security.Cryptography;
-using System.Text;
 using System.CommandLine.Rendering;
-using System.CommandLine.Rendering.Views;
 
 namespace Kryptos
 {
@@ -35,7 +32,7 @@ namespace Kryptos
                     }
                     else
                     {
-                        var response = new List<string>();
+                        var response = new List<string>(new string[] { "Name,Length,CompressedLength,Crc32" });
                         foreach (var item in zip.Entries)
                         {
                             response.Add($"{item.Name},{item.Length},{item.CompressedLength},{item.Crc32}");
