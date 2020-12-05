@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-
-namespace Kryptos
+﻿namespace Kryptos
 {
     public class Jwt
     {

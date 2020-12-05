@@ -21,6 +21,11 @@ A .NET core tool for cryptography.
 - JWT decoding
 - HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, HMAC-SHA512, HMAC-MD5
 - Subresource Integrity
+- Cryptographic Object Identifier lookup
+- Create self-signed certificates (PFX)
+- Encryption and decryption using PFX
+- Random Number Generator
+- Zip file content information
 
 ## Installation
 
@@ -70,11 +75,19 @@ kryptos --help
     ```
     kryptos oid -t 1.3.6.1.5.5.7.3.1
     ```
-    
+6. Generate a self-signed PFX certificate
+    ```
+    kryptos pfx create -st www.contoso.com -kt password -o contoso.pfx
+    ```  
+7. Encrypt text using a PFX certificate
+    ```
+    kryptos pfx enc -ci contoso.pfx -kt password -t "The quick brown fox jumps over the lazy dog."
+    ```    
+
 ## Contributing
 - Fork the repo on [GitHub][git-repo]
 - Clone the project to your own machine
-- Commit changes to your own branch
+- Commit changes to ```vnext``` branch
 - Push your work back up to your fork
 - Be sure to pull the latest from "upstream" before making a pull request!
 - Submit a Pull Request so that changes can be reviewed and merged
