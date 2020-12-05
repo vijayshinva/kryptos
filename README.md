@@ -22,6 +22,7 @@ A .NET core tool for cryptography.
 - HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, HMAC-SHA512, HMAC-MD5
 - Subresource Integrity
 - Cryptographic Object Identifier lookup
+- Create self-signed certificates (PFX)
 - Encryption and decryption using PFX
 - Random Number Generator
 - Zip file information
@@ -74,9 +75,13 @@ kryptos --help
     ```
     kryptos oid -t 1.3.6.1.5.5.7.3.1
     ```
-6. Encrypt text using a PFX certificate
+6. Generate a self-signed PFX certificate
     ```
-    kryptos pfx enc -ci MyCertificate.pfx -kt pfxPassword -t "The quick brown fox jumps over the lazy dog."
+    kryptos pfx create -st www.contoso.com -kt password -o contoso.pfx
+    ```  
+7. Encrypt text using a PFX certificate
+    ```
+    kryptos pfx enc -ci contoso.pfx -kt password -t "The quick brown fox jumps over the lazy dog."
     ```    
 
 ## Contributing

@@ -4,6 +4,7 @@ using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.CommandLine.IO;
 using System.IO;
+using System.Net;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -27,14 +28,15 @@ namespace Kryptos
             {
                 try
                 {
-                    using var certificate = new X509Certificate2(certInput.FullName, keyText);
-                    using var rsa = certificate.GetRSAPublicKey();
-
                     if (input != null)
                     {
                         text = await File.ReadAllTextAsync(input.FullName).ConfigureAwait(false);
                     }
+
+                    using var certificate = new X509Certificate2(certInput.FullName, keyText);
+                    using var rsa = certificate.GetRSAPublicKey();
                     var encryptedText = rsa.Encrypt(Encoding.UTF8.GetBytes(text), RSAEncryptionPadding.Pkcs1);
+
                     if (output == null)
                     {
                         console.Out.WriteLine(Convert.ToBase64String(encryptedText));
@@ -109,7 +111,49 @@ namespace Kryptos
                     console.Out.WriteLine($"NotAfter\t: {certificate.NotAfter:dd-MMM-yyyy}");
                     console.Out.WriteLine($"NotBefore\t: {certificate.NotBefore:dd-MMM-yyyy}");
                     console.Out.WriteLine($"HasPrivateKey\t: {certificate.HasPrivateKey}");
-                    console.Out.Write($"Oid\t\t: {certificate.PublicKey.Oid.FriendlyName}");
+                    console.Out.WriteLine($"PublicKey\t: {certificate.PublicKey.Oid.FriendlyName} ({certificate.PublicKey.Oid.Value})");
+                    console.Out.WriteLine($"Signature\t: {certificate.SignatureAlgorithm.FriendlyName} ({certificate.SignatureAlgorithm.Value})");
+                    console.Out.WriteLine($"SerialNumber\t: {certificate.SerialNumber}");
+                    console.Out.WriteLine($"Version\t\t: V{certificate.Version}");
+                }
+                catch (Exception ex)
+                {
+                    console.Out.WriteLine(ex.Message);
+                    return 22;
+                }
+                return 0;
+            });
+
+            var pfxCreateCommand = new Command("create", "Create Self Signed Certificate");
+            pfxCreateCommand.AddOption(new Option<string>(new string[] { "--subjecttext", "-st" }, "Subject Text"));
+            pfxCreateCommand.AddOption(new Option<string>(new string[] { "--keytext", "-kt" }, "Key Text"));
+            pfxCreateCommand.AddOption(new Option<FileInfo>(new string[] { "--output", "-o" }, "Output file path"));
+
+            pfxCreateCommand.Handler = CommandHandler.Create<string, string, FileInfo, IConsole>((subjectText, keyText, output, console) =>
+            {
+                try
+                {
+                    using var rsa = RSA.Create(3072);
+                    var certificateRequest = new CertificateRequest($"CN={subjectText}", rsa, HashAlgorithmName.SHA512, RSASignaturePadding.Pkcs1);
+                    var subjectAlternativeNameBuilder = new SubjectAlternativeNameBuilder();
+                    subjectAlternativeNameBuilder.AddIpAddress(IPAddress.Loopback);
+                    subjectAlternativeNameBuilder.AddIpAddress(IPAddress.IPv6Loopback);
+                    subjectAlternativeNameBuilder.AddDnsName("localhost");
+                    certificateRequest.CertificateExtensions.Add(subjectAlternativeNameBuilder.Build());
+
+                    var certificate = certificateRequest.CreateSelfSigned(DateTimeOffset.Now, DateTimeOffset.Now.AddYears(3));
+                    certificate.FriendlyName = subjectText;
+
+                    if (output == null)
+                    {
+                        console.Out.WriteLine("-----BEGIN CERTIFICATE-----\r\n");
+                        console.Out.WriteLine(Convert.ToBase64String(certificate.Export(X509ContentType.Cert), Base64FormattingOptions.InsertLineBreaks));
+                        console.Out.WriteLine("\r\n-----END CERTIFICATE-----");
+                    }
+                    else
+                    {
+                        File.WriteAllBytesAsync(output.FullName, certificate.Export(X509ContentType.Pfx, keyText));
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -122,6 +166,7 @@ namespace Kryptos
             pfxCommand.Add(pfxEncCommand);
             pfxCommand.Add(pfxDecCommand);
             pfxCommand.Add(pfxInfoCommand);
+            pfxCommand.Add(pfxCreateCommand);
             rootCommand.AddCommand(pfxCommand);
 
             return rootCommand;
