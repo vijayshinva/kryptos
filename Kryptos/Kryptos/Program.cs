@@ -30,7 +30,8 @@ namespace Kryptos
                 .WireUpSriCommands()
                 .WireUpOidCommands()
                 .WireUpPfxCommands()
-                .WireUpRngCommands();
+                .WireUpRngCommands()
+                .WireUpZipCommands();
 
             return await rootCommand.InvokeAsync(args);
         }

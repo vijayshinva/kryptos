@@ -22,6 +22,9 @@ A .NET core tool for cryptography.
 - HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, HMAC-SHA512, HMAC-MD5
 - Subresource Integrity
 - Cryptographic Object Identifier lookup
+- Encryption and decryption using PFX
+- Random Number Generator
+- Zip file information
 
 ## Installation
 
